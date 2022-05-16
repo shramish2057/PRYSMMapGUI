@@ -176,9 +176,6 @@ class Ui_MainWindow(object):
 
         self.comboBox = QComboBox(self.map)
         self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
 
         self.horizontalLayout_2.addWidget(self.comboBox)
@@ -224,6 +221,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.label_10)
 
         self.comboBox_2 = QComboBox(self.map)
+        self.comboBox_2.addItem("")
+        self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
@@ -316,17 +315,19 @@ class Ui_MainWindow(object):
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Just select the locations at the map along with the time period to get the observational output", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Select Proxy", None))
         self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Coral", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Icecores", None))
-        self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Speleotherm", None))
-        self.comboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"Tree Ring Cellulose", None))
+        #self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Icecores", None))
+        #self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Speleotherm", None))
+        #self.comboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"Tree Ring Cellulose", None))
 
         # self.label_8.setText(QCoreApplication.translate("MainWindow", u"Longitude", None))
         # self.label_9.setText(QCoreApplication.translate("MainWindow", u"Latitude", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Time Period", None))
-        self.comboBox_2.setItemText(0, QCoreApplication.translate("MainWindow", u"1960-1970", None))
-        self.comboBox_2.setItemText(1, QCoreApplication.translate("MainWindow", u"1970-1980", None))
-        self.comboBox_2.setItemText(2, QCoreApplication.translate("MainWindow", u"1980-1990", None))
-        self.comboBox_2.setItemText(3, QCoreApplication.translate("MainWindow", u"1990-2000", None))
+        self.comboBox_2.setItemText(0, QCoreApplication.translate("MainWindow", u"1955-1964", None))
+        self.comboBox_2.setItemText(1, QCoreApplication.translate("MainWindow", u"1965-1974", None))
+        self.comboBox_2.setItemText(2, QCoreApplication.translate("MainWindow", u"1975-1984", None))
+        self.comboBox_2.setItemText(3, QCoreApplication.translate("MainWindow", u"1985-1994", None))
+        self.comboBox_2.setItemText(4, QCoreApplication.translate("MainWindow", u"1995-2004", None))
+        self.comboBox_2.setItemText(5, QCoreApplication.translate("MainWindow", u"2005-2017", None))
 
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Submit", None))
     # retranslateUi
