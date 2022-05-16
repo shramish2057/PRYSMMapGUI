@@ -1,10 +1,53 @@
 =======
-PRYSM
+PRYSM Map GUI (PRYSM Map Graphical User Interface)
 =====
-open-source tools for PRoxY System Modeling, v1.0: oxygen-isotope systems
+
+PRYSM Map GUI is the extension of existing PRYSM application (https://github.com/sylvia-dee/PRYSM). This application aims to make the proxy forward modeling process easier for researchers enabling them just to select the time period and multiple location coordinates and get the outout proxy data as results.
 
 Introduction
 ---------------------------
+
+Installation Guide:
+---------------------------
+
+#### Application Setup Guide
+
+1. Clone this github repository as:
+  ```
+  git clone https://github.com/shramish2057/PRYSM_Map_GUI
+   
+  ```
+2. Download the psm dependencies:
+  ```
+   python setup.py install
+   
+  ```
+   Alternately, you can use pip: 
+      
+  ``` 
+  pip install git+https://github.com/sylvia-dee/PRYSM.git
+  ```
+
+Either method will add a module named 'psm' to your default lib/python2.7/site-packages/ directory.
+
+If you lack root access:  
+ python setup.py install --user
+3.  Then navigate inside frontend and install required dependencies for frontend as:
+   ```
+   cd frontend
+   npm run install
+   
+   ```
+ 4. Finally, to run the application, navigate to the root folder and run the applications as:
+   ```
+   cd /
+   npm run dev
+   
+   ```
+a) Clone this github repository as:
+
+
+git clone 
 The paper, published in JAMES: http://onlinelibrary.wiley.com/doi/10.1002/2015MS000447/full
 
 Proxy system modeling can be used in paleoclimatology to improve the interpretation of 
