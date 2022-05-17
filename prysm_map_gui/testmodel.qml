@@ -9,7 +9,7 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Controls 1.4
 
-
+// creating an item with map component
 Item {
     width: 600
     height: 600
@@ -22,7 +22,7 @@ Item {
         }
         center: QtPositioning.coordinate(59.91, 10.75)
         zoomLevel: 3
-
+        // adding model to save location coordinates
         ListModel {
             id: mapModel
         }
@@ -46,6 +46,7 @@ Item {
                         }
                     }
                 }
+                // popup to display latitude and longitude values
                 Popup {
                     id: popup
                     width: 145
@@ -60,7 +61,7 @@ Item {
                 coordinate : QtPositioning.coordinate(lat, longi)
             }
         }
-
+        // function to click and save map location coordinates
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -70,7 +71,7 @@ Item {
                 print('Latitude:'+ coord.latitude + 'Longitude:' + coord.longitude)
             }
         }
-
+        // rectangular box to show clear selected locations button
         Rectangle {
             id: button
 

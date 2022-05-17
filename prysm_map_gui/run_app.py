@@ -12,7 +12,7 @@ from output import Output_Window
 from PySide2 import QtCore, QtQml
 import csv
 
-
+# locate current directory
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -23,42 +23,54 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.main_win)
 
+        # setting the title for the application
         self.main_win.setWindowTitle("PRYSM MAP GUI")
         
         self.ui.stackedWidget.setCurrentWidget(self.ui.homepage)
-
+        
+        # toggle to homepage when homepage button is clicked
         self.ui.mainpage.clicked.connect(self.showHomepage)
+        # toggle to map view when mapview button is clicked
         self.ui.mapview.clicked.connect(self.showMap)
 
         self.ui.pushButton.released.connect(self.btnpress)
         self.ui.pushButton.clicked.connect(self.outputwindow)
 
-
+    # defining previously created output window
     def outputwindow(self):                                             # <===
         self.w = Output_Window()
         self.w.show()
         #self.hide()
 
+    # functional logic on opening of driver script after clicking submit button
+    # 
     def btnpress(self):
 
+        # opening the location file where location coordinates which have 
+        # been clicked by user in user interface is store. Here, we go through 
+        # this csv file and for each latitude and longitude value we start a process
+        # to run a driver script passing time period and location coordinates
+        # to driver script.
         with open("location.csv", 'r') as file:
             csvreader = csv.reader(file)
             header = next(csvreader)
             for row in csvreader:
-                print(row)
+                # starting the process
                 self.process = QProcess()
                 self.process.readyReadStandardError.connect(self.handle_readyReadStandardError)
                 self.process.readyReadStandardOutput.connect(
                     self.handle_readyReadStandardOutput
                 )
                 self.process.setProgram(sys.executable)
-
+                
+                # extracting the selected time period in the GUI
                 selectedTimePeriod = self.ui.comboBox_2.currentText()
                 selectedTimePeriodVal= self.checkSelectedTimePeriod(selectedTimePeriod)
 
                 script_path = os.path.join( CURRENT_DIR, "coral_driver/coral_driver.py")
-                print(script_path)
+                print(script_path, selectedTimePeriodVal)
                 arguments = row
+                # execution of process to run the driver script
                 self.process.start(script_path, arguments)
                 self.process.waitForFinished(-1)
 
@@ -67,7 +79,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 msg = "{}\n".format(number)
                 self.process.write(msg.encode())
 
-
+    # function to check the time period selected
     def checkSelectedTimePeriod(self, time_period):
         if time_period == "1955-1964":
             contentVal= "5564"
