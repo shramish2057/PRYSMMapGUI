@@ -1,4 +1,4 @@
-=======
+=====
 PRYSM Map GUI (PRYSM Map Graphical User Interface)
 =====
 
@@ -6,7 +6,7 @@ PRYSM Map GUI is the extension of existing PRYSM application (https://github.com
 
 Introduction
 ---------------------------
-PRYSM Map GUI is exptended upon the source code of https://github.com/sylvia-dee/PRYSM/tree/v0.1. A new folder "prysm_map_gui" is added to the codebase and complete work of development of graphical user interface and integration has been carried out in this folder.
+PRYSM Map GUI is extended upon the source code of https://github.com/sylvia-dee/PRYSM/tree/v0.1. A new folder "prysm_map_gui" is added to the codebase and complete work of development of graphical user interface and integration has been carried out in this folder.
 
 Folder Structure (prysm_map_gui)
 ---------------------------
@@ -19,58 +19,64 @@ Folder Structure (prysm_map_gui)
 a. sss: sss is a sub folder which consists of .csv files for Sea Surface Salinity for time periods 1954-1965, 1965-1974, 1975-1894, 1895-2004, and 2005-2017 respectively. These have been downloaded from: https://www.ncei.noaa.gov/access/world-ocean-atlas-2018/bin/woa18.pl?parameter=s with the paramters : csv format, 1 degree grid, statistical mean, and data for each decadal periods.
 b. sst: sst is a sub folder which consists of .csv files for Sea Surface Temperature for time periods 1954-1965, 1965-1974, 1975-1894, 1895-2004, and 2005-2017 respectively. These have been downloaded from: https://www.ncei.noaa.gov/access/world-ocean-atlas-2018/bin/woa18.pl?parameter=t with the paramters : csv format, 1 degree grid, statistical mean, and data for each decadal periods.
 4. output.py: pyside2 file to generate output observation window
-5. prysm_map.py:
-6. run_app.py:
-7. testmodel.qml:
-
-
-How is SST and SSS data integrated to PRYSM application ?
----------------------------------------------------------
+5. prysm_map.py: consists of the GUI creation logic 
+6. run_app.py: the main file which runs the graphical user interface: (Entry point of GUI)
+7. testmodel.qml: qml file which has the logic for embedded map interface
 
 
 Installation Guide:
 ---------------------------
 
-1. Clone this github repository as:
-  ```
-  git clone https://github.com/shramish2057/PRYSM_Map_GUI
+Please make sure that you are using Python v2.7 to run this application.
    
+1. cd to the PRYSM directory:      
+   ```
+   cd PRYSM
+   ```
+2. Activate your virtual environment for python
   ```
-2. Download the psm dependencies:
+	pip install virtualenv
   ```
-   python setup.py install
-   
   ```
+  python -m virtualenv PRYSM
+  ```
+
+3. Install the required dependencies:
+  ```
+  pip install numpy scipy PySide2 matplotlib
+  ```
+ 
+4. Download the psm dependencies:
+  ```
+  python setup.py install
+  ```
+  
    Alternately, you can use pip: 
       
-  ``` 
+  ```
   pip install git+https://github.com/sylvia-dee/PRYSM.git
-  ``` 
-  Either method will add a module named 'psm' to your default lib/python2.7/site-packages/ directory.
+  ```
+  
+  Either method will add a module named 'psm' to your default lib/python2.7/site-packages/                          directory.
 
   If you lack root access:  
   ```
   python setup.py install --user
   ```
 
-3.  Install the python requirements:
-
 Example of running the application locally:
 --------------------------------------------
 
-1) Inside prysm_map_gui directory, run 
+1. Be inside prysm_map_gui directory and run the application:
   ```
+  cd prysm_map_gui
   python run_app.py
   ```
-This opens a graphical user interface (PRYSM Map GUI).
+  This opens a graphical user interface (PRYSM Map GUI).
 
-In the GUI click the Map View and select the time period and multiple location at map interfaces.
+2. In the GUI click the Map View and select the time period and multiple location at map interfaces as below:
 
-
-Finally, click submit button on GUI. This displays a output proxy downloaded window. Now navigate to results folder which is 
-present in prysm_map_gui directory. Here, one can see all the downloaded output proxy data for the selected locations.
-
-
+3. Finally, click submit button on GUI. This displays a output proxy downloaded window. Now navigate to results folder which is present in prysm_map_gui directory. Here, one can see all the downloaded output proxy data for the selected locations.
 
 
 References:
