@@ -17,6 +17,8 @@ from PySide2 import QtCore, QtQml
 import csv
 import os
 
+# csv helper function to write the selected location coordinates 
+# inside csv file
 class CSVHelper(QtCore.QObject):
     @QtCore.Slot("QAbstractItemModel*", str)
     def saveListModel(self, model, filename):
@@ -32,11 +34,19 @@ class CSVHelper(QtCore.QObject):
                     row[name] = value
                 writer.writerow(row)
 
+# main window class which consists the logic of creation
+# of home page and map view
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(738, 697)
+
+        # The below code is the creation of each components to be shown 
+        # in the graphical user interface. The central widget is MainWindow
+        # and other components are correctly placed using specific layouts,
+        # labels, and spacer
+
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_3 = QGridLayout(self.centralwidget)
@@ -99,7 +109,7 @@ class Ui_MainWindow(object):
 
         self.label_3 = QLabel(self.homepage)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setPixmap(QPixmap(u"../../../Downloads/output-onlinepngtools.png"))
+        self.label_3.setPixmap(QPixmap(u"map.png"))
         self.label_3.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
@@ -247,8 +257,10 @@ class Ui_MainWindow(object):
 
         self.map_widget = QQuickWidget(self.map)
 
+        # calling csv helper for the map widget
         csv_helper = CSVHelper(self.map_widget)
         self.map_widget.rootContext().setContextProperty('CSVHelper', csv_helper)
+        # setting up the qml path to add map interface to user interface
         qml_path = os.path.join(os.path.dirname(__file__), "testmodel.qml")
         self.map_widget.setSource(QtCore.QUrl.fromLocalFile(qml_path))
 
@@ -302,7 +314,7 @@ class Ui_MainWindow(object):
 
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
-
+    # Giving each of the above constructed components a field name
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.mainpage.setText(QCoreApplication.translate("MainWindow", u"Homepage", None))

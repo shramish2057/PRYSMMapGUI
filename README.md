@@ -6,11 +6,30 @@ PRYSM Map GUI is the extension of existing PRYSM application (https://github.com
 
 Introduction
 ---------------------------
+PRYSM Map GUI is exptended upon the source code of https://github.com/sylvia-dee/PRYSM/tree/v0.1. A new folder "prysm_map_gui" is added to the codebase and complete work of development of graphical user interface and integration has been carried out in this folder.
+
+Folder Structure (prysm_map_gui)
+---------------------------
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title")
+
+1. coral_driver: This folder contains the driver script to run coral proxy model with the extracted longitude and latitude values and collected input SST and SSS datasets for different timeperiods. It consists of 6 driver scripts to run the proxy model for 6 different time periods(1954-1965, 1965-1974, 1975-1894, 1895-2004, 2005-2017) datasets of SST and SSS.
+2. results: This is the folder where the result output proxy is obtained. The result output proxy is saved as coral_age_"latitude_value"_perturbed.csv and simulated_coral_"latitude_value"_d18O.csv. One can simply double check the latitude for which position they had clicked on map interface and hence get the required data.
+3. test_data_coral: This folder consists of the datasets collected from World Ocean Atlas 2018 for Sea Surface Temperature(SST) and Sea Surface Salinity (SSS) for 6 decadal periods.
+a. sss: sss is a sub folder which consists of .csv files for Sea Surface Salinity for time periods 1954-1965, 1965-1974, 1975-1894, 1895-2004, and 2005-2017 respectively. These have been downloaded from: https://www.ncei.noaa.gov/access/world-ocean-atlas-2018/bin/woa18.pl?parameter=s with the paramters : csv format, 1 degree grid, statistical mean, and data for each decadal periods.
+b. sst: sst is a sub folder which consists of .csv files for Sea Surface Temperature for time periods 1954-1965, 1965-1974, 1975-1894, 1895-2004, and 2005-2017 respectively. These have been downloaded from: https://www.ncei.noaa.gov/access/world-ocean-atlas-2018/bin/woa18.pl?parameter=t with the paramters : csv format, 1 degree grid, statistical mean, and data for each decadal periods.
+4. output.py: pyside2 file to generate output observation window
+5. prysm_map.py:
+6. run_app.py:
+7. testmodel.qml:
+
+
+How is SST and SSS data integrated to PRYSM application ?
+---------------------------------------------------------
+
 
 Installation Guide:
 ---------------------------
-
-#### Application Setup Guide
 
 1. Clone this github repository as:
   ```
@@ -26,89 +45,41 @@ Installation Guide:
       
   ``` 
   pip install git+https://github.com/sylvia-dee/PRYSM.git
+  ``` 
+  Either method will add a module named 'psm' to your default lib/python2.7/site-packages/ directory.
+
+  If you lack root access:  
+  ```
+  python setup.py install --user
   ```
 
-Either method will add a module named 'psm' to your default lib/python2.7/site-packages/ directory.
+3.  Install the python requirements:
 
-If you lack root access:  
- python setup.py install --user
-3.  Then navigate inside frontend and install required dependencies for frontend as:
-   ```
-   cd frontend
-   npm run install
-   
-   ```
- 4. Finally, to run the application, navigate to the root folder and run the applications as:
-   ```
-   cd /
-   npm run dev
-   
-   ```
-a) Clone this github repository as:
+Example of running the application locally:
+--------------------------------------------
+
+1) Inside prysm_map_gui directory, run 
+  ```
+  python run_app.py
+  ```
+This opens a graphical user interface (PRYSM Map GUI).
+
+In the GUI click the Map View and select the time period and multiple location at map interfaces.
 
 
-git clone 
-The paper, published in JAMES: http://onlinelibrary.wiley.com/doi/10.1002/2015MS000447/full
+Finally, click submit button on GUI. This displays a output proxy downloaded window. Now navigate to results folder which is 
+present in prysm_map_gui directory. Here, one can see all the downloaded output proxy data for the selected locations.
 
-Proxy system modeling can be used in paleoclimatology to improve the interpretation of 
-paleoclimate data. Existing forward models for climate proxies are somewhat scattered in 
-the literature, making their integration difficult. Further, each model has been coded 
-separately, according to disparate conventions. Here, we present a comprehensive, consistently 
-formatted package of forward models for water-isotope based climate proxies (ice cores, corals, 
-tree ring cellulose, and speleothem calcite) [PRYSM]. This suite of Python-scripted models requires
-a standard set of climate inputs and can be used to simulate the proxy variable of interest by proxy class. 
-By making this forward modeling toolbox publicly available, PRYSM provides an accessible platform that maximizes
-the utility of proxy data and facilitates proxy-climate (simulated or historical) comparisons. Many of these codes 
-have been employed in past studies; we review modeling approaches for each proxy class, and compare 
-results when forced with an isotope-enabled climate simulation. Applications of multi-proxy forward 
-modeling including parameter estimation, the effects of physical processes (such as karst transit times 
-or firn diffusion in ice cores) on the simulated climate signal, as well as explicit modeling of 
-time uncertainties are used to demonstrate the utility of PRYSM for a broad array of climate studies. 
 
-![Icecore Proxy System Model](examples/images/PSM_icecore_ex.png)
 
-Dependencies
----------------------------
-python 2.7 (https://www.python.org/download/releases/2.7/)
 
-numpy (http://www.numpy.org/)  
-scipy (http://www.scipy.org/)  
-rpy2 (http://rpy.sourceforge.net/) (For BCHRON)  
+References:
+--------------------------------------------
 
-Optional:
-  matplotlib (http://matplotlib.org/) (For plotting tools)
-  
-![Age Uncertainties](examples/images/age_uncertainties.png)
+PRYSM Application: https://github.com/sylvia-dee/PRYSM
 
-Installation
----------------------------
-Make sure the dependencies are installed, then download and unzip this package, and then:  
-  python setup.py install
+Research Papers Based on PRYSM: 
+1. http://onlinelibrary.wiley.com/doi/10.1002/2015MS000447/full
 
-Alternately, you can use pip:  
-  pip install git+https://github.com/sylvia-dee/PRYSM.git
 
-Either method will add a module named 'psm' to your default lib/python2.7/site-packages/ directory.
 
-If you lack root access:  
- python setup.py install --user
- 
-For git users:
- git clone https://github.com/sylvia-dee/PRYSM.git
- python setup.py install
-
-Testing
----------------------------
-From the examples/ directory, run each of the example driver scripts and each of the plotting examples. For just the icecore example:  
-python icecore_driver.py  
-
-This will create numpy array output files in examples/results/:  
-ice_Xn.npy
-ice_time_d.npy
-ice_depth.npy
-ice_diffused.npy
-
-To plot (requires matplotlib):  
-python plot_icecore_example.py
-
-This will reproduce paper figure 3.

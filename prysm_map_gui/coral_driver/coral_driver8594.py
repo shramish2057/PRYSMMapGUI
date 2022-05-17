@@ -29,8 +29,8 @@ def coral_driver(latitude, longitude):
     # PREPARATION OF Location Coordinates, SST, and SSS datasets
      
     #Data directory
-    sstdatadir='test_data_coral/sst/' 
-    sssdatadir='test_data_coral/sss/'
+    sstdatadir='woa018_datasets/sst/' 
+    sssdatadir='woa018_datasets/sss/'
     print('Loading data from ', sstdatadir,' ...')
 
     #Converting latitude and longitudes to float
@@ -59,7 +59,7 @@ def coral_driver(latitude, longitude):
                 if math.ceil(floatlat) == math.ceil(lat) and math.ceil(floatlon) == math.ceil(lon):
                     csv_writer.writerow(line[2:])
 
-    #reading the World Ocean Atlas Sea Surface Salinity csv dataset for 2005-2017
+    #reading the World Ocean Atlas Sea Surface Salinity csv dataset for 1985-1994
     with open(sssdatadir+'woa18_8594_s00mn01.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         
@@ -85,6 +85,7 @@ def coral_driver(latitude, longitude):
     file = open(sstdatadir+'woa18_8594_sst.csv')
     ssta = np.loadtxt(file, delimiter=",")
 
+    file = open(sssdatadir +'woa18_8594_sss.csv')
     sssa = np.loadtxt(file, delimiter=",")
 
     # setting up time axis

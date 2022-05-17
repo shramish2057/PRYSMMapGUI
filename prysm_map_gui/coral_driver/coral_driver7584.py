@@ -29,15 +29,15 @@ def coral_driver(latitude, longitude):
     # PREPARATION OF Location Coordinates, SST, and SSS datasets
      
     #Data directory
-    sstdatadir='test_data_coral/sst/' 
-    sssdatadir='test_data_coral/sss/'
+    sstdatadir='woa018_datasets/sst/' 
+    sssdatadir='woa018_datasets/sss/'
     print('Loading data from ', sstdatadir,' ...')
 
     #Converting latitude and longitudes to float
     lat= float(latitude)
     lon= float(longitude)
 
-    #reading the World Ocean Atlas Sea Surface Temperature csv dataset for 2005-2017
+    #reading the World Ocean Atlas Sea Surface Temperature csv dataset for 1975-1984
     with open(sstdatadir+'woa18_7584_t00mn01.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         

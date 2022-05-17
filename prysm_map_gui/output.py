@@ -12,7 +12,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
-
+# class to create output window to display download information
 class Output_Window (QMainWindow):                           
     def __init__(self):
         super(Output_Window, self).__init__()

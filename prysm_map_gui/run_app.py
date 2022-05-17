@@ -56,7 +56,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 selectedTimePeriod = self.ui.comboBox_2.currentText()
                 selectedTimePeriodVal= self.checkSelectedTimePeriod(selectedTimePeriod)
 
-                script_path = os.path.join( CURRENT_DIR, "coral_driver/coral_driver"+ selectedTimePeriodVal +".py")
+                script_path = os.path.join( CURRENT_DIR, "coral_driver/coral_driver.py")
                 print(script_path)
                 arguments = row
                 self.process.start(script_path, arguments)

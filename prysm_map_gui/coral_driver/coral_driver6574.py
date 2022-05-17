@@ -29,8 +29,8 @@ def coral_driver(latitude, longitude):
     # PREPARATION OF Location Coordinates, SST, and SSS datasets
      
     #Data directory
-    sstdatadir='test_data_coral/sst/' 
-    sssdatadir='test_data_coral/sss/'
+    sstdatadir='woa018_datasets/sst/' 
+    sssdatadir='woa018_datasets/sss/'
     print('Loading data from ', sstdatadir,' ...')
 
     #Converting latitude and longitudes to float
@@ -38,7 +38,7 @@ def coral_driver(latitude, longitude):
     lon= float(longitude)
 
     #reading the World Ocean Atlas Sea Surface Temperature csv dataset for 2005-2017
-    with open(sstdatadir+'woa18_6574_t00mn01.csv', 'r') as csv_file:
+    with open(sstdatadir+'woa18_A5B7_t00mn01.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         
         # skipping the first intro lines of the data
@@ -49,7 +49,7 @@ def coral_driver(latitude, longitude):
         # according to the selected location coordinates by the user at PRYSM Map GUI
         # This hence saves the sea surface temperature dataset for specific location
         # for depths ranging from 0-5500 m.
-        with open(sstdatadir+'woa18_6574_sst.csv', 'w') as new_file:
+        with open(sstdatadir+'woa18_0517_sst.csv', 'w') as new_file:
             csv_writer = csv.writer(new_file, delimiter='\n')
 
             for line in csv_reader:
@@ -59,8 +59,8 @@ def coral_driver(latitude, longitude):
                 if math.ceil(floatlat) == math.ceil(lat) and math.ceil(floatlon) == math.ceil(lon):
                     csv_writer.writerow(line[2:])
 
-    #reading the World Ocean Atlas Sea Surface Salinity csv dataset for 2005-2017
-    with open(sssdatadir+'woa18_6574_s00mn01.csv', 'r') as csv_file:
+    #reading the World Ocean Atlas Sea Surface Salinity csv dataset for 1965-1974
+    with open(sssdatadir+'woa18_A5B7_s00mn01.csv', 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         
         # skipping the first intro lines of the data
@@ -71,7 +71,7 @@ def coral_driver(latitude, longitude):
         # according to the selected location coordinates by the user at PRYSM Map GUI
         # This hence saves the sea surface temperature dataset for specific location
         # for depths ranging from 0-5500 m.
-        with open(sssdatadir+'woa18_6574_sss.csv', 'w') as new_file:
+        with open(sssdatadir+'woa18_0517_sss.csv', 'w') as new_file:
             csv_writer = csv.writer(new_file, delimiter='\n')
 
             for line in csv_reader:
@@ -82,10 +82,10 @@ def coral_driver(latitude, longitude):
                     csv_writer.writerow(line[2:])
     # Load SST anomalies [K] (NOTE: THIS SHOULD BE A 1-D VECTOR OF DATA!)
     # yearly
-    file = open(sstdatadir+'woa18_6574_sst.csv')
+    file = open(sstdatadir+'woa18_sst.csv')
     ssta = np.loadtxt(file, delimiter=",")
 
-    file = open(sssdatadir +'woa18_6574_sss.csv')
+    file = open(sssdatadir +'woa18_sss.csv')
     sssa = np.loadtxt(file, delimiter=",")
 
     # setting up time axis

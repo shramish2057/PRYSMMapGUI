@@ -29,8 +29,8 @@ def coral_driver(latitude, longitude):
     # PREPARATION OF Location Coordinates, SST, and SSS datasets
      
     #Data directory
-    sstdatadir='test_data_coral/sst/' 
-    sssdatadir='test_data_coral/sss/'
+    sstdatadir='woa018_datasets/sst/' 
+    sssdatadir='woa018_datasets/sss/'
     print('Loading data from ', sstdatadir,' ...')
 
     #Converting latitude and longitudes to float
@@ -82,10 +82,10 @@ def coral_driver(latitude, longitude):
                     csv_writer.writerow(line[2:])
     # Load SST anomalies [K] (NOTE: THIS SHOULD BE A 1-D VECTOR OF DATA!)
     # yearly
-    file = open(sstdatadir+'woa18_0517_sst.csv')
+    file = open(sstdatadir+'woa18_sst.csv')
     ssta = np.loadtxt(file, delimiter=",")
 
-    file = open(sssdatadir +'woa18_0517_sss.csv')
+    file = open(sssdatadir +'woa18_sss.csv')
     sssa = np.loadtxt(file, delimiter=",")
 
     # setting up time axis
