@@ -11,7 +11,7 @@ PRYSM Map GUI is extended upon the source code of https://github.com/sylvia-dee/
 Folder Structure (prysm_map_gui)
 ---------------------------
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title")
+![Alt text](images/folder.png)
 
 1. coral_driver: This folder contains the driver script to run coral proxy model with the extracted longitude and latitude values and collected input SST and SSS datasets for different timeperiods. It consists of 6 driver scripts to run the proxy model for 6 different time periods(1954-1965, 1965-1974, 1975-1894, 1895-2004, 2005-2017) datasets of SST and SSS.
 2. results: This is the folder where the result output proxy is obtained. The result output proxy is saved as coral_age_"latitude_value"_perturbed.csv and simulated_coral_"latitude_value"_d18O.csv. One can simply double check the latitude for which position they had clicked on map interface and hence get the required data.
@@ -30,14 +30,12 @@ Installation Guide:
 Please make sure that you are using Python v2.7 to run this application.
    
 1. cd to the PRYSM directory:      
-   ```
-   cd PRYSM
-   ```
+  ```
+  cd PRYSM
+  ```
 2. Activate your virtual environment for python
   ```
 	pip install virtualenv
-  ```
-  ```
   python -m virtualenv PRYSM
   ```
 
@@ -75,10 +73,13 @@ Example of running the application locally:
   This opens a graphical user interface (PRYSM Map GUI).
 
 2. In the GUI click the Map View and select the time period and multiple location at map interfaces as below:
+![Alt text](images/selection.png)
 
 3. Finally, click submit button on GUI. This displays a output proxy downloaded window. Now navigate to results folder which is present in prysm_map_gui directory. Here, one can see all the downloaded output proxy data for the selected locations.
+![Alt text](images/results.png)
 
-
+## Final Implemented GUI
+![Alt text](images/final.png)
 References:
 --------------------------------------------
 
