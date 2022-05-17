@@ -37,6 +37,7 @@ Please make sure that you are using Python v2.7 to run this application.
   ```
 	pip install virtualenv
   python -m virtualenv PRYSM
+  source PRYSM/bin/activate
   ```
 
 3. Install the required dependencies:
