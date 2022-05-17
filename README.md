@@ -83,6 +83,7 @@ Example of running the application locally:
 <img src="images/final.png" alt="drawing" width="300"/>
 
 References:
+-------------
 
 1. Dee, S., & Burroughs, B. M. (2015). PRYSM (v0.1) [Proxy System Modeling Application]. Github. https://github.com/sylvia-dee/PRYSM
 
