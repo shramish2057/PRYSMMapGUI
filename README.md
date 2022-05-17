@@ -1,6 +1,6 @@
-=====
-PRYSM Map GUI (PRYSM Map Graphical User Interface)
-=====
+
+# PRYSM Map GUI (PRYSM Map Graphical User Interface)
+
 
 PRYSM Map GUI is the extension of existing PRYSM application (https://github.com/sylvia-dee/PRYSM). This application aims to make the proxy forward modeling process easier for researchers enabling them just to select the time period and multiple location coordinates and get the outout proxy data as results.
 
