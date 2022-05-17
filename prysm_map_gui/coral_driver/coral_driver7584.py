@@ -150,8 +150,8 @@ def coral_driver(latitude, longitude):
     print('Coral Age', coral)
     print('Simulated Coral', Xp)
     outdir='./results/'
-    np.savetxt(outdir+"simulated_coral"+str(lat)+"_d18O.csv",coral)
-    np.savetxt(outdir+"coral_age"+str(lat)+"_perturbed.csv",Xp)
+    np.save(outdir+"simulated_coral"+str(lat)+"_d18O.npy",coral)
+    np.save(outdir+"coral_age"+str(lat)+"_perturbed.npy",Xp)
 
 if __name__ == '__main__':
     lat = sys.argv[1]
